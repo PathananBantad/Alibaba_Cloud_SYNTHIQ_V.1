@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synthiq AI Business Chat</title>
+  <link rel="stylesheet" href="business-chat.css" />
+</head>
+
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="logo-wrap">
+        <div class="logo-box">SA</div>
+        <div class="logo-text">
+          <h2>Synthiq AI</h2>
+          <p>Business Assistant</p>
+        </div>
+      </div>
+
+      <a href="#" class="new-chat-btn" id="newChatBtn">+ New Chat</a>
+
+      <nav class="menu">
+        <a href="dashboard.html" class="menu-item">Chat History</a>
+        <a href="business-chat.html" class="menu-item active">Business Chat</a>
+        <a href="report.html" class="menu-item">Report</a>
+      </nav>
+
+      <div class="recent-section">
+        <h3>Recent Chats</h3>
+        <div class="recent-list"></div>
+      </div>
+    </aside>
+
+    <main class="chat-main">
+      <header class="chat-header">
+        <div>
+          <h1>SYNTHIQ AI BUSINESS CHAT</h1>
+          <p>Fill in the business form below to generate investment insights, risk level, and a structured report.</p>
+        </div>
+        <a href="report.html" class="report-link">Open Report</a>
+      </header>
+
+      <section class="quick-prompts">
+        <button type="button" class="prompt-btn" data-fill="starter">Starter Business</button>
+        <button type="button" class="prompt-btn" data-fill="coffee">Coffee Shop</button>
+        <button type="button" class="prompt-btn" data-fill="fashion">Fashion Brand</button>
+        <button type="button" class="prompt-btn" data-fill="bubble">Bubble Tea</button>
+      </section>
+
+      <section class="chat-area" id="chatArea"></section>
+
+      <div class="form-shell" id="formShell">
+        <div class="form-toolbar">
+          <span class="form-title">Business Form</span>
+          <button type="button" class="toggle-form-btn" id="toggleFormBtn">
+            <span id="toggleFormText">Hide Form</span>
+            <span class="toggle-arrow" id="toggleArrow">⌃</span>
+          </button>
+        </div>
+
+        <div class="form-card" id="formCard">
+          <form class="chat-input-area" id="chatForm">
+            <div class="field-group">
+              <label for="business_type">Business Type</label>
+              <select id="business_type" required>
+                <option value="">Select Business Type</option>
+                <option value="coffee shop">Coffee Shop</option>
+                <option value="restaurant">Restaurant</option>
+                <option value="bubble tea">Bubble Tea</option>
+                <option value="fashion">Fashion</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="country">Country</label>
+              <select id="country" required>
+                <option value="">Select Country</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Vietnam">Vietnam</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Singapore">Singapore</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="city">City</label>
+              <select id="city" required>
+                <option value="">Select Market Type</option>
+                <option value="tier1">Tier 1 City (Major City)</option>
+                <option value="tier2">Tier 2 City (Developing City)</option>
+                <option value="tier3">Tier 3 City (Emerging Area)</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="budget">Budget (USD)</label>
+              <input type="number" id="budget" placeholder="e.g. 5000 (USD)" required />
+            </div>
+
+            <div class="field-group">
+              <label for="target_customer">Target Customer</label>
+              <select id="target_customer" required>
+                <option value="">Select Target Customer</option>
+                <option value="students">Students</option>
+                <option value="young professionals">Young Professionals</option>
+                <option value="families">Families</option>
+                <option value="tourists">Tourists</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="competitor_level">Competition Level</label>
+              <select id="competitor_level" required>
+                <option value="">Select Competition Level</option>
+                <option value="low">Low Competition</option>
+                <option value="medium">Medium Competition</option>
+                <option value="high">High Competition</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="secondary-btn" id="resetBtn">Reset</button>
+              <button type="submit" class="primary-btn" id="analyzeBtn">Analyze Business</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <aside class="insight-panel">
+      <div class="panel-card">
+        <h3>Live Insight</h3>
+        <div class="big-number" id="scoreValue">--</div>
+        <p>Investment score will appear here after analysis.</p>
+
+        <div class="score-breakdown" id="scoreBreakdown">
+          <div class="breakdown-title">Score Breakdown</div>
+
+          <div class="breakdown-item">
+            <div class="breakdown-row">
+              <span>Demographic Fit</span>
+              <span id="demographicScore">--</span>
+            </div>
+            <div class="breakdown-bar">
+              <div class="breakdown-fill" id="demographicBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="breakdown-item">
+            <div class="breakdown-row">
+              <span>Trend Momentum</span>
+              <span id="trendScore">--</span>
+            </div>
+            <div class="breakdown-bar">
+              <div class="breakdown-fill" id="trendBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="breakdown-item">
+            <div class="breakdown-row">
+              <span>Macro Stability</span>
+              <span id="macroScore">--</span>
+            </div>
+            <div class="breakdown-bar">
+              <div class="breakdown-fill mid" id="macroBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="breakdown-item">
+            <div class="breakdown-row">
+              <span>Competition Score</span>
+              <span id="competitionScore">--</span>
+            </div>
+            <div class="breakdown-bar">
+              <div class="breakdown-fill low" id="competitionBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="breakdown-item">
+            <div class="breakdown-row">
+              <span>Location Potential</span>
+              <span id="locationScore">--</span>
+            </div>
+            <div class="breakdown-bar">
+              <div class="breakdown-fill" id="locationBar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="breakdown-item">
+            <div class="breakdown-row">
+              <span>Financial Readiness</span>
+              <span id="financialScore">--</span>
+            </div>
+            <div class="breakdown-bar">
+              <div class="breakdown-fill" id="financialBar" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-card">
+        <h3>Risk Level</h3>
+        <div class="tag" id="riskValue">--</div>
+        <p>Estimated business risk will be updated automatically.</p>
+      </div>
+
+      <div class="panel-card">
+        <h3>Report Summary</h3>
+        <p id="reportSummary">
+          The AI-generated business summary will appear here and can later be expanded in the report page.
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <script src="business-chat.js"></script>
+</body>
+
+</html>

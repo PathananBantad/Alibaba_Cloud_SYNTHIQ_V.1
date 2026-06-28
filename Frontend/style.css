@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Prompt', sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.hero {
+  min-height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.laptop-frame {
+  width: min(1120px, 100%);
+  position: relative;
+}
+
+.screen {
+  width: 100%;
+  background: #000;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 34px 34px 8px 8px;
+  padding: 28px 28px 36px;
+  box-shadow: 0 15px 60px rgba(255, 255, 255, 0.08);
+}
+
+.brand-box {
+  width: 74px;
+  height: 74px;
+  border: 2px solid rgba(196, 205, 255, 0.65);
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  border-radius: 10px;
+  margin-bottom: 22px;
+}
+
+.content {
+  background: linear-gradient(135deg, #071d8a 0%, #0a2cb7 100%);
+  min-height: 590px;
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+}
+
+.left-side {
+  padding: 70px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-side h1 {
+  font-size: clamp(2.6rem, 4.5vw, 4.3rem);
+  line-height: 0.95;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.left-side h1 span {
+  display: block;
+  font-size: clamp(1rem, 2vw, 1.55rem);
+  letter-spacing: 8px;
+  margin-top: 16px;
+  font-weight: 600;
+}
+
+.left-side p {
+  max-width: 420px;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.84);
+  margin-bottom: 34px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: fit-content;
+}
+
+.btn {
+  min-width: 210px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: 0.25s ease;
+}
+
+.primary {
+  background: #ffffff;
+  color: #071d8a;
+}
+
+.secondary {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.82);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.right-side {
+  padding: 40px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard {
+  width: 100%;
+  max-width: 640px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(13, 28, 134, 0.65), rgba(11, 21, 92, 0.75));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 24px;
+}
+
+.top-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, rgba(161, 112, 255, 0.35), rgba(51, 212, 255, 0.18));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.stat-card .label {
+  display: block;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.stat-card small {
+  color: #88fff3;
+  font-size: 0.95rem;
+}
+
+.graph-area {
+  display: grid;
+  grid-template-columns: 1.35fr 0.8fr;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.line-chart,
+.bar-chart,
+.bottom-table {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+}
+
+.line-chart {
+  min-height: 230px;
+  position: relative;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    rgba(255, 255, 255, 0.05);
+  background-size: 100% 25%, 20% 100%, auto;
+}
+
+.point {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #75f5ff;
+  z-index: 2;
+}
+
+.p1 {
+  left: 12%;
+  bottom: 24%;
+}
+
+.p2 {
+  left: 28%;
+  bottom: 43%;
+}
+
+.p3 {
+  left: 46%;
+  bottom: 35%;
+}
+
+.p4 {
+  left: 66%;
+  bottom: 61%;
+}
+
+.p5 {
+  left: 84%;
+  bottom: 74%;
+}
+
+.line {
+  position: absolute;
+  height: 4px;
+  background: linear-gradient(90deg, #67f8ff, #cb7cff);
+  border-radius: 999px;
+  transform-origin: left center;
+}
+
+.one {
+  width: 102px;
+  left: 13.5%;
+  bottom: 30%;
+  transform: rotate(20deg);
+}
+
+.two {
+  width: 110px;
+  left: 30.5%;
+  bottom: 46%;
+  transform: rotate(-10deg);
+}
+
+.three {
+  width: 122px;
+  left: 48.5%;
+  bottom: 43%;
+  transform: rotate(22deg);
+}
+
+.four {
+  width: 108px;
+  left: 68%;
+  bottom: 66%;
+  transform: rotate(14deg);
+}
+
+.bar-chart {
+  min-height: 230px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 16px;
+}
+
+.bar {
+  width: 44px;
+  border-radius: 14px 14px 8px 8px;
+  background: linear-gradient(180deg, #47dfff, #775bff);
+}
+
+.b1 {
+  height: 68px;
+}
+
+.b2 {
+  height: 120px;
+}
+
+.b3 {
+  height: 168px;
+}
+
+.b4 {
+  height: 104px;
+}
+
+.b5 {
+  height: 142px;
+}
+
+.bottom-table {
+  padding: 14px 18px;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 0.8fr;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.95rem;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-row.header {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.up {
+  color: #89ffbf;
+  font-weight: 600;
+}
+
+.down {
+  color: #ff9aa6;
+  font-weight: 600;
+}
+
+.laptop-base {
+  width: 112%;
+  height: 28px;
+  background: linear-gradient(180deg, #6f6f6f 0%, #2d2d2d 100%);
+  margin-left: -6%;
+  border-radius: 0 0 22px 22px;
+}
+
+@media (max-width: 1100px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 32px 14px 50px;
+  }
+
+  .screen {
+    padding: 16px 16px 24px;
+    border-radius: 24px 24px 8px 8px;
+  }
+
+  .brand-box {
+    width: 58px;
+    height: 58px;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+
+  .left-side,
+  .right-side {
+    padding: 28px 22px;
+  }
+
+  .graph-area,
+  .top-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .buttons {
+    width: 100%;
+  }
+
+  .btn {
+    min-width: 100%;
+  }
+
+  .laptop-base {
+    width: 100%;
+    margin-left: 0;
+  }
+}
